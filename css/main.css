@@ -14,8 +14,13 @@ html {
     color: #222;
     font-size: 1em;
     line-height: 1.4;
-    background-color: #FF7674;
+    height: 100%;
 }
+
+body {
+    background-color: #FF7674 !important;
+    height: 100%;
+  }
 
 /*
  * Remove text-shadow in selection highlight:
