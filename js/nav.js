@@ -1,29 +1,27 @@
-$(document).ready(function () {
-
-    var navbar = "#slide-nav";
-    var navmenu = "#slidemenu";
-    var toggler = ".nav-toggle";
-    var pagewrapper = "#page-content";
-    var menuwidth = "100%";
-    var slidewidth = "80%";
-    var menuneg = "-100%";
-    var slideneg = "-80%";
-
-
-    $(toggler).click(function() {
-      // $(navbar).toggle("slow");
-      //
-      var selected = $(this).hasClass("slide-active");
-
-      $(navmenu).stop().animate({
-        left: selected ? menuneg : "0px"
-      });
-
-      $(this).toggleClass("slide-active", !selected);
-      $("#slidemenu").toggleClass("slide-active");
-      $("#page-content, .nav, body").toggleClass("slide-active");
+$(function() {
+    $(".toggle-nav").click(function() {
+        toggleNavigation();
     });
+});
 
+function toggleNavigation() {
+    if ($("#container").hasClass("display-nav")) {
+        $("#container").removeClass("display-nav");
+    } else {
+        $("#container").addClass("display-nav");
+    }
+}
 
+$("#toggle > li > div").click(function() {
+    if (false == $(this).next().is("visable")) {
+        $("#toggle ul").slideUp();
+    }
 
+    var $currIcon = $(this).find("span.the-btn");
+    $("span.the-btn").not($currIcon).assClass("fa-plus").remove("fa-minus");
+    $currIcon.toggleClass("fa-minus fa-plus");
+
+    $(this).next().slideToggle();
+    $("#toggle > li > div").removeClass("active");
+    $(this).addClass("active");
 });
